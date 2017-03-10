@@ -1,0 +1,30 @@
+html,
+body {
+    height: 100%;
+}
+
+#pageContainer {
+    background-image: url(../images/background.jpg);
+    min-height: 100%;
+    min-width: 100%;
+    background-size: cover; 
+}
+
+#gameContainer {
+    display: flex;
+         justify-content: space-around;
+     align-items: center;
+     flex-wrap: wrap;
+    padding: 3px;
+    width: 400px;
+    height: 400px;
+    background-color: darkgray;
+    margin-top: 35px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.gameSquare {
+    width: 45px;
+    height: 45px;
+    background-color: gray;
+}
