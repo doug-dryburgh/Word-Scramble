@@ -1,30 +1,110 @@
-html,
-body {
-    height: 100%;
-}
-
-#pageContainer {
-    background-image: url(../images/background.jpg);
-    min-height: 100%;
-    min-width: 100%;
-    background-size: cover; 
-}
-
-#gameContainer {
-    display: flex;
-         justify-content: space-around;
+ @import url('https://fonts.googleapis.com/css?family=Pangolin');
+ html,
+ body {
+     height: 100%;
+ }
+ 
+ #pageContainer {
+     background-image: url(../images/background.jpg);
+     min-height: 100%;
+     min-width: 100%;
+     background-size: cover;
+ }
+ 
+ #gameContainer {
+     display: none;
+     justify-content: space-around;
      align-items: center;
      flex-wrap: wrap;
-    padding: 3px;
-    width: 400px;
-    height: 400px;
-    background-color: darkgray;
-    margin-top: 35px;
-    margin-left: auto;
-    margin-right: auto;
-}
-.gameSquare {
-    width: 45px;
-    height: 45px;
-    background-color: gray;
-}
+     padding: 3px;
+     width: 400px;
+     height: 400px;
+     background-color: darkgray;
+     margin-top: 35px;
+     margin-left: auto;
+     margin-right: auto;
+ }
+ 
+ .gameSquare {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     width: 45px;
+     height: 45px;
+     background-color: gray;
+     cursor: pointer;
+ }
+ 
+ #welcome {
+     display: flex;
+     align-items: center;
+     flex-direction: column;
+     width: 400px;
+     background-color: darkgray;
+     margin-top: 35px;
+     margin-left: auto;
+     margin-right: auto;
+ }
+ 
+ #timer {
+     width: 100px;
+     display: none;
+     background-color: darkgray;
+     text-align: center;
+     margin: auto;
+ }
+ 
+ #word {
+     width: 200px;
+     display: none;
+     background-color: darkgray;
+ }
+ 
+ #score {
+     display: none;
+     align-items: center;
+     flex-direction: column;
+     width: 400px;
+     background-color: darkgray;
+     margin-top: 35px;
+     margin-left: auto;
+     margin-right: auto;
+ }
+ 
+ .highlight {
+     background-color: yellow;
+ }
+ 
+ .selected {
+     background-color: red;
+ }
+ 
+ h1 {
+     font-size: 4em;
+     font-family: 'Pangolin', cursive;
+ }
+ 
+ h2 {
+     font-size: 3em;
+     font-family: 'Pangolin', cursive;
+ }
+ 
+ h3 {
+     font-size: 3em;
+     font-family: 'Pangolin', cursive;
+ }
+ 
+ h4 {
+     font-size: 2em;
+     font-family: 'Pangolin', cursive;
+ }
+ 
+ h4:hover {
+     color: red;
+     cursor: pointer;
+ }
+ 
+ p {
+     font-size: 1.25em;
+     font-family: 'Pangolin', cursive;
+ }
