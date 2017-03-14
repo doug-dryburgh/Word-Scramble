@@ -18,8 +18,7 @@
      align-items: center;
      justify-content: space-between;
      flex-direction: column;
-     min-width: 400px;
-     max-width: 400px;
+     width: 400px;
      height: 450px;
      background: radial-gradient(rgb(150, 230, 190), rgb(81, 214, 148));
      border-radius: 5px;
@@ -34,8 +33,7 @@
      align-items: center;
      flex-wrap: wrap;
      padding: 3px;
-     min-width: 400px;
-     max-width: 400px;
+     width: 400px;
      height: 400px;
      background: radial-gradient(rgb(150, 230, 190), rgb(81, 214, 148));
      border-radius: 5px;
@@ -59,8 +57,7 @@
      flex-direction: column;
      justify-content: flex-start;
      align-items: center;
-     min-width: 200px;
-    max-width: 200px;
+     width: 200px;
      height: 250px;
      margin-top: 35px;
      background: radial-gradient(rgb(150, 230, 190), rgb(81, 214, 148));
@@ -72,8 +69,7 @@
      flex-direction: column;
      justify-content: space-between;
      align-items: center;
-     min-width: 200px;
-     max-width: 200px;
+     width: 200px;
      height: 250px;
      margin-top: 35px;
      background: radial-gradient(rgb(150, 230, 190), rgb(81, 214, 148));
@@ -99,8 +95,7 @@
      align-items: center;
      justify-content: space-between;
      flex-direction: column;
-     min-width: 400px;
-     max-width: 400px;
+     width: 400px;
      height: 350px;
      background: radial-gradient(rgb(150, 230, 190), rgb(81, 214, 148));
      border-radius: 5px;

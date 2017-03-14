@@ -1,11 +1,10 @@
 $(document).ready(function () {
-    var gameLetters = ["K", "J", "X", "Q", "Z", "F", "H", "V", "W", "Y", "B", "C", "M", "P", "G", "D", "D", "D", "U", "U", "U", "S", "S", "S", "L", "L", "L", "T", "T", "T", "T", "R", "R", "R", "R", "N", "N", "N", "N", "O", "O", "O", "O", "O", "A", "A", "A", "A", "A", "A", "I", "I", "I", "I", "I", "I", "E", "E", "E", "E", "E", "E", "E", "E"];
-    var score = 0;
     //GENERATE GAME SQUARES
     for (var i = 1; i <= 64; i++) {
         $("#gameContainer").append('<div id="' + i + '" class="gameSquare"><h3></h3></div>');
     }
     //ASSIGN SQUARE
+    var gameLetters = ["K", "J", "X", "Q", "Z", "F", "H", "V", "W", "Y", "B", "C", "M", "P", "G", "D", "D", "D", "U", "U", "U", "S", "S", "S", "L", "L", "L", "T", "T", "T", "T", "R", "R", "R", "R", "N", "N", "N", "N", "O", "O", "O", "O", "O", "A", "A", "A", "A", "A", "A", "I", "I", "I", "I", "I", "I", "E", "E", "E", "E", "E", "E", "E", "E"];
     for (var j = 1; j <= 64; j++) {
         var letter = gameLetters[Math.floor(Math.random() * gameLetters.length)];
         $("#" + j + " > h3").html(letter);
@@ -77,6 +76,7 @@ $(document).ready(function () {
     }
     //WORD SELECT
     var myWord = "";
+    var allWords = [];
     var squareSelected = [];
     var direction;
     $(".gameSquare").click(function () {
@@ -129,8 +129,8 @@ $(document).ready(function () {
     });
     //CLEAR
     function clearHighlight() {
-        for (var i = 1; i < 65; i++) {
-            $("#" + i).removeClass("highlight");
+        for (var k = 1; k < 65; k++) {
+            $("#" + k).removeClass("highlight");
         }
         myWord = "";
         squareSelected = [];
@@ -138,9 +138,9 @@ $(document).ready(function () {
     }
 
     function clearAll() {
-        for (var j = 1; j < 65; j++) {
-            $("#" + j).removeClass("highlight");
-            $("#" + j).removeClass("selected");
+        for (var l = 1; l < 65; l++) {
+            $("#" + l).removeClass("highlight");
+            $("#" + l).removeClass("selected");
         }
         myWord = "";
         squareSelected = [];
@@ -154,23 +154,29 @@ $(document).ready(function () {
     });
     //SUBMIT
     $("#submit").click(function () {
-        //will check word in dictionary if accepted add to list/score, otherwise tell the player it's not a valid word.
-        var index = wordSearch(myWord.toLocaleLowerCase());
-        if (index < 0) {
-            console.log("not a word");
+        var wordCheck = wordSearch(myWord.toLocaleLowerCase());
+        if (wordCheck < 0) {
+            alert("Not a valid word, please try again!");
             clearHighlight();
         }
         else {
-            console.log("word brah");
-            for (var k = 0; k < squareSelected.length; k++) {
-                $("#" + squareSelected[k]).removeClass("highlight");
-                $("#" + squareSelected[k]).addClass("selected");
+            if (allWords.indexOf(myWord) < 0) {
+                for (var m = 0; m < squareSelected.length; m++) {
+                    $("#" + squareSelected[m]).removeClass("highlight");
+                    $("#" + squareSelected[m]).addClass("selected");
+                }
+                allWords.push(myWord);
+                scoreUpdate();
+                clearHighlight();
             }
-            scoreUpdate();
-            clearHighlight();
+            else {
+                alert("No duplicate words!");
+                clearHighlight();
+            }
         }
     });
     //SCORE
+    var score = 0;
     $("#score").html(score);
 
     function scoreUpdate() {
@@ -198,6 +204,6 @@ $(document).ready(function () {
             score += 21;
         }
         $("#score").html(score);
-        $("#acceptedWords").append("<li>" + myWord + "</li>");
+        $("#acceptedWords").append("-" + myWord + "  ");
     }
 });

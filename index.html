@@ -3,10 +3,9 @@
 
 <head>
     <title>Word Scramble!</title>
-    <meta name="description" content="">
+    <meta name="description" content="A fun word search game. You have 4 minutes to try and find as many words as possible. The longer the word the more points it is worth!">
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-</head>
+    <link rel="stylesheet" type="text/css" href="css/style.css"> </head>
 
 <body>
     <div id="pageContainer" class="container">
@@ -14,23 +13,15 @@
         <div id="welcome">
             <h1>Word Scramble!</h1>
             <h3>How to play:</h3>
-            <p>You have 4 minutes to find as many words as possible! Search accross, down and diagonal (left to right). The longer the word the more points it is worth. Don't forget that you are able to re-use letters in multiple words!</p>
+            <p>You have 4 minutes to find as many words as possible! Search &#8594; &#8595; &#8599; &#8600; The longer the word the more points it is worth. Don't forget that you are able to re-use letters in multiple words but you can't submit the same word more than twice!</p>
             <h4 id="start">Got it, let's play!</h4> </div>
-                <!--Left bar-->
+        <!--Left bar-->
         <div id="leftBar">
             <h2>Word Scramble!</h2>
-            <div id="scoreContainer">
-                <p>Score:</p>
-                <h3 id="score"></h3> </div>
-            <div id="listContainer">
-                <ul id="acceptedWords"> </ul>
-            </div>
-        </div>
-        
+            <p>Score:</p>
+            <h3 id="score"></h3> </div>
         <!--Game-->
         <div id="gameContainer"> </div>
-
-        
         <!--Action bar-->
         <div id="actionBar">
             <h3 id="timer"></h3>
@@ -40,23 +31,20 @@
                 <p id="clear">Clear</p>
             </div>
         </div>
-        
-        
-        
-        
         <!--Score Screen-->
         <div id="scoreScreen">
             <h3>Well done! You scored:</h3>
             <h3 id="finalScore"></h3>
+            <p id="acceptedWords"> </p>
             <h4 id="playAgain">Play again!</h4> </div>
     </div>
     <!--Scripts-->
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-        <script src="js/wordSearch.js"></script>
-
+    <script src="js/wordSearch.js"></script>
     <script src="js/js.js"></script>
 </body>
 
 </html>
 <!-- Credits:
+1) Word dictionary sourced from: https://github.com/zeke/an-array-of-english-words
 -->
