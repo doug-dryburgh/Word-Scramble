@@ -4,25 +4,20 @@ $(document).ready(function () {
         $("#gameContainer").append('<div id="' + i + '" class="gameSquare"><h3></h3></div>');
     }
     //ASSIGN SQUARE
-    var gameLetters = ["K", "J", "X", "Q", "Z", "F", "H", "V", "W", "Y", "B", "C", "M", "P", "G", "D", "D", "D", "U", "U", "U", "S", "S", "S", "L", "L", "L", "T", "T", "T", "T", "R", "R", "R", "R", "N", "N", "N", "N", "O", "O", "O", "O", "O", "A", "A", "A", "A", "A", "A", "I", "I", "I", "I", "I", "I", "E", "E", "E", "E", "E", "E", "E", "E"];
-    for (var j = 1; j <= 64; j++) {
-        var letter = gameLetters[Math.floor(Math.random() * gameLetters.length)];
-        $("#" + j + " > h3").html(letter);
-        var index = gameLetters.indexOf(letter);
-        gameLetters.splice(index, 1);
+    function generate() {
+        var gameLetters = ["K", "J", "X", "Q", "Z", "F", "H", "V", "W", "Y", "B", "C", "M", "P", "G", "D", "D", "D", "U", "U", "U", "S", "S", "S", "L", "L", "L", "T", "T", "T", "T", "R", "R", "R", "R", "N", "N", "N", "N", "O", "O", "O", "O", "O", "A", "A", "A", "A", "A", "A", "I", "I", "I", "I", "I", "I", "E", "E", "E", "E", "E", "E", "E", "E"];
+        for (var j = 1; j <= 64; j++) {
+            var letter = gameLetters[Math.floor(Math.random() * gameLetters.length)];
+            $("#" + j + " > h3").html(letter);
+            var index = gameLetters.indexOf(letter);
+            gameLetters.splice(index, 1);
+        }
     }
+    generate();
     //START
     $("#start").click(function () {
-        $("#welcome").fadeOut();
-        setTimeout(function () {
-            $("#gameContainer").fadeIn();
-            $("#gameContainer").css("display", "flex");
-            $("#leftBar").fadeIn();
-            $("#leftBar").css("display", "flex");
-            $("#actionBar").fadeIn();
-            $("#actionBar").css("display", "flex");
-            startTime();
-        }, 400);
+        document.getElementById("menu").style.width = "0px";
+        startTime();
     });
     //PLAY AGAIN
     $("#playAgain").click(function () {
@@ -30,8 +25,6 @@ $(document).ready(function () {
         setTimeout(function () {
             $("#gameContainer").fadeIn();
             $("#gameContainer").css("display", "flex");
-            $("#leftBar").fadeIn();
-            $("#leftBar").css("display", "flex");
             $("#actionBar").fadeIn();
             $("#actionBar").css("display", "flex");
             startTime();
@@ -42,14 +35,13 @@ $(document).ready(function () {
     function startTime() {
         var minutes = 4;
         var seconds = 0;
-        $("#timer").html(minutes + ":0" + seconds);
+        $(".timer").html(minutes + ":0" + seconds);
         var clock = setInterval(function () {
             if (seconds === 0) {
                 if (minutes === 0) {
                     clearInterval(clock);
                     setTimeout(function () {
                         $("#gameContainer").fadeOut();
-                        $("#leftBar").fadeOut();
                         $("#actionBar").fadeOut();
                         $("#finalScore").html(score + " points");
                         setTimeout(function () {
@@ -67,10 +59,10 @@ $(document).ready(function () {
                 seconds--;
             }
             if (seconds > 9) {
-                $("#timer").html(minutes + ":" + seconds);
+                $(".timer").html(minutes + ":" + seconds);
             }
             else {
-                $("#timer").html(minutes + ":0" + seconds);
+                $(".timer").html(minutes + ":0" + seconds);
             }
         }, 1000);
     }
@@ -123,7 +115,7 @@ $(document).ready(function () {
         function selectWord() {
             $("#" + selected).addClass("highlight");
             myWord += $("#" + selected + "> h3").text();
-            $("#word").append($("#" + selected + "> h3").text());
+            $(".word").append($("#" + selected + "> h3").text());
             squareSelected.push(selected);
         }
     });
@@ -134,7 +126,7 @@ $(document).ready(function () {
         }
         myWord = "";
         squareSelected = [];
-        $("#word").html("");
+        $(".word").html("");
     }
 
     function clearAll() {
@@ -143,17 +135,19 @@ $(document).ready(function () {
             $("#" + l).removeClass("selected");
         }
         myWord = "";
+        allWords = [];
         squareSelected = [];
-        $("#word").html("");
+        $(".word").html("");
         $("#acceptedWords").html("");
         score = 0;
-        $("#score").html(score);
+        $(".score").html(score);
+        generate();
     }
-    $("#clear").click(function () {
+    $(".clear").click(function () {
         clearHighlight();
     });
     //SUBMIT
-    $("#submit").click(function () {
+    $(".submit").click(function () {
         var wordCheck = wordSearch(myWord.toLocaleLowerCase());
         if (wordCheck < 0) {
             alert("Not a valid word, please try again!");
@@ -177,7 +171,7 @@ $(document).ready(function () {
     });
     //SCORE
     var score = 0;
-    $("#score").html(score);
+    $(".score").html(score);
 
     function scoreUpdate() {
         var wordLength = squareSelected.length;
@@ -203,7 +197,7 @@ $(document).ready(function () {
         case 8:
             score += 21;
         }
-        $("#score").html(score);
+        $(".score").html(score);
         $("#acceptedWords").append("-" + myWord + "  ");
     }
 });
