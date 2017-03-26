@@ -16,7 +16,7 @@ $(document).ready(function () {
     generate();
     //START
     $("#start").click(function () {
-        document.getElementById("menu").style.width = "0px";
+        document.getElementById("instructions").style.width = "0px";
         startTime();
     });
     //PLAY AGAIN
